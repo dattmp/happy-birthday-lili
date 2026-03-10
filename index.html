@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lịch sự kiện</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #0d0d14;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(180,120,255,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(255,160,100,0.08) 0%, transparent 60%);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 16px 60px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .subtitle {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .timeline {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  /* vertical line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 44px;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: linear-gradient(to bottom,
+      transparent,
+      rgba(255,255,255,0.12) 15%,
+      rgba(255,255,255,0.12) 85%,
+      transparent);
+  }
+
+  .group { margin-bottom: 28px; }
+
+  .date-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+  }
+
+  .date-dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c084fc, #818cf8);
+    box-shadow: 0 0 14px rgba(192,132,252,0.6);
+    flex-shrink: 0;
+    margin-left: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .date-text {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .cards { padding-left: 72px; display: flex; flex-direction: column; gap: 8px; }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s, border-color 0.2s;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .card:hover {
+    transform: translateX(4px);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:nth-child(1) { animation-delay: 0.1s; }
+  .card:nth-child(2) { animation-delay: 0.2s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+
+  .card.highlight {
+    background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(129,140,248,0.1));
+    border-color: rgba(192,132,252,0.35);
+  }
+
+  .emoji { font-size: 1.3rem; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+
+  .card-body { flex: 1; }
+
+  .buoi {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .buoi.sang { color: #fbbf24; }
+  .buoi.toi  { color: #a78bfa; }
+
+  .event {
+    font-size: 0.92rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.4;
+  }
+
+  .event strong { font-weight: 600; color: #fff; }
+</style>
+</head>
+<body>
+
+<h1>Lịch Sự Kiện</h1>
+<p class="subtitle">Tháng 3 – 4 · 2026</p>
+
+<div class="timeline">
+
+  <!-- 31/03 -->
+  <div class="group" style="animation-delay:0.0s">
+    <div class="date-label">
+      <div class="date-dot" style="background:linear-gradient(135deg,#f472b6,#c084fc); box-shadow:0 0 14px rgba(244,114,182,0.6)"></div>
+      <span class="date-text">31 tháng 3, 2026</span>
+    </div>
+    <div class="cards">
+      <div class="card highlight">
+        <div class="emoji">🎂</div>
+        <div class="card-body">
+          <div class="buoi toi">🌙 Tối</div>
+          <div class="event">Tổ chức sinh nhật <strong>LiLi</strong><br>Lovera Vista · Sài Gòn</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16/04 -->
+  <div class="group">
+    <div class="date-label">
+      <div class="date-dot"></div>
+      <span class="date-text">16 tháng 4, 2026</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🚗</div>
+        <div class="card-body">
+          <div class="buoi sang">🌅 Sáng</div>
+          <div class="event">Về quê</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17/04 -->
+  <div class="group">
+    <div class="date-label">
+      <div class="date-dot" style="background:linear-gradient(135deg,#34d399,#818cf8); box-shadow:0 0 14px rgba(52,211,153,0.5)"></div>
+      <span class="date-text">17 tháng 4, 2026</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="emoji">🍚</div>
+        <div class="card-body">
+          <div class="buoi sang">🌅 Sáng</div>
+          <div class="event">Cúng thôi nôi</div>
+        </div>
+      </div>
+      <div class="card highlight">
+        <div class="emoji">🥂</div>
+        <div class="card-body">
+          <div class="buoi toi">🌙 Tối</div>
+          <div class="event">Đãi tiệc</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
